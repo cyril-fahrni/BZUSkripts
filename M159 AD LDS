@@ -1,13 +1,13 @@
 ### Installation ###
 
-Systemsteuerung -> Programme and Features -> Windows Features Aktivieren oder deaktivieren -> AD LDS auswählen ausführen.
-
 Template inhalt in eine .txt File kopieren -> Pfad im Code anpassen falls nötig.
 
 Ausführen.
 
 
 ### Code ###
+
+Add-WindowsCapability -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0 -Online
 Start-Process -FilePath "$env:SystemRoot\ADAM\adaminstall.exe" -ArgumentList "/answer:C:\temp\install_adam_template.txt"
 
 ###template inhalt:###
