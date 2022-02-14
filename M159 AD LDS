@@ -1,0 +1,21 @@
+Start-Process -FilePath "$env:SystemRoot\ADAM\adaminstall.exe" -ArgumentList "/answer:C:\temp\install_adam_template.txt"
+
+###templat inhalt:###
+
+[ADAMInstall]
+
+InstallType=Unique
+
+InstanceName=Instanz1
+
+NewApplicationPartitionToCreate="O=Firma,C=ch"
+
+DataFilesPath=C:\Program Files\Microsoft ADAM\TestInstanz\data
+
+LogFilesPath=C:\Program Files\Microsoft ADAM\TestInstanz\data
+
+ImportLDIFFiles="ms-user.ldf"
+ImportLDIFFiles="MS-InetOrgPerson.LDF"
+ImportLDIFFiles="MS-UserProxy.LDF"
+
+############################################################
