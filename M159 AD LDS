@@ -1,6 +1,16 @@
+### Installation ###
+
+Systemsteuerung -> Programme and Features -> Windows Features Aktivieren oder deaktivieren -> AD LDS auswählen ausführen.
+
+Template inhalt in eine .txt File kopieren -> Pfad im Code anpassen falls nötig.
+
+Ausführen.
+
+
+### Code ###
 Start-Process -FilePath "$env:SystemRoot\ADAM\adaminstall.exe" -ArgumentList "/answer:C:\temp\install_adam_template.txt"
 
-###templat inhalt:###
+###template inhalt:###
 
 [ADAMInstall]
 
