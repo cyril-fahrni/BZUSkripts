@@ -12,9 +12,9 @@ InstanceName=Instanz1
 
 NewApplicationPartitionToCreate="O=Firma,C=ch"
 
-DataFilesPath=C:\Program Files\Microsoft ADAM\TestInstanz\data
+DataFilesPath=C:\Program Files\Microsoft ADAM\Instanz1\data
 
-LogFilesPath=C:\Program Files\Microsoft ADAM\TestInstanz\data
+LogFilesPath=C:\Program Files\Microsoft ADAM\Instanz1\data
 
 ImportLDIFFiles="ms-user.ldf"
 ImportLDIFFiles="MS-InetOrgPerson.LDF"
