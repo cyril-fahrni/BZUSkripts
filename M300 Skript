@@ -1,0 +1,23 @@
+Get-Module -Name ActiveDirectory -ListAvailable
+##Networkadapter##
+New-NetIPAddress -InterfaceAlias Ethernet0 -AddressFamily IPv4 -IPAddress 192.168.51.10 -PrefixLength 24 -DefaultGateway 192.168.51.1
+Set-DnsClientServerAddress -InterfaceAlias "Ethernet0" -ServerAddresses ("192.168.51.10")
+
+###Rename Computer
+Rename-Computer 300-01-DC
+$nachname = Read-Host "Gib deinen Nachnamen ein z.B Fahrni"
+
+##Install all neeeded features and Modules for Installation
+Install-WindowsFeature DNS
+Install-WindowsFeature -name AD-Domain-Services -IncludeManagementTools
+Import-Module ADDSDeployment
+
+$SecurePasswordSafeMode = ConvertTo-SecureString '+root4ALL' –asplaintext –force
+$SecurePasswordsync = ConvertTo-SecureString '+role4ALL' –asplaintext –force
+$SecurePasswordtester = ConvertTo-SecureString '+user4ALL' –asplaintext –force
+
+$pw = Read-Host "Gib +root4ALL ein" -AsSecureString
+Install-ADDSForest -DomainName $nachname+".modul300" -InstallDNS -SafeModeAdministratorPassword $SecurePasswordSafeMode -Force -Confirm
+
+New-ADUser -Name "sync-user" -Accountpassword $SecurePasswordsync -Enabled $true
+New-ADUser -Name "tester" -Accountpassword $SecurePasswordtester -Enabled $true
