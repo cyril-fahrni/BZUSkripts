@@ -1,0 +1,14 @@
+### Install ###
+
+# Modul link: https://github.com/bottkars/vmxtoolkit #
+install-module vmxtoolkit 
+
+
+### Code ###
+# Beim New-VMX -Type * kann man angeben was man will, macht keinen Unterscheid.
+
+Measure-Command -Expression { New-VMX -VMXName Test -type centos7-64 -Firmware BIOS | 
+New-VMXScsiDisk -NewDiskSize 10GB -NewDiskname SCSI0_0 | 
+Add-VMXScsiDisk -LUN 0 -Controller 0 | 
+Connect-VMXcdromImage -ISOfile "### Dein ISO-File ###" | 
+Set-VMXNetworkAdapter -Adapter 0 -ConnectionType nat -AdapterType e1000e }
