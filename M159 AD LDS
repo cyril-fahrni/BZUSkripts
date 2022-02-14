@@ -1,18 +1,10 @@
 ### Installation ###
 
-Template inhalt in eine .txt File kopieren -> Pfad im Code anpassen falls nötig.
-
-Ausführen.
+Code ausführen :P
 
 
 ### Code ###
-
-Add-WindowsCapability -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0 -Online
-Start-Process -FilePath "$env:SystemRoot\ADAM\adaminstall.exe" -ArgumentList "/answer:C:\temp\install_adam_template.txt"
-
-###template inhalt:###
-
-[ADAMInstall]
+'[ADAMInstall]
 
 InstallType=Unique
 
@@ -20,12 +12,13 @@ InstanceName=Instanz1
 
 NewApplicationPartitionToCreate="O=Firma,C=ch"
 
-DataFilesPath=C:\Program Files\Microsoft ADAM\Instanz1\data
+DataFilesPath=C:\Program Files\Microsoft ADAM\TestInstanz\data
 
-LogFilesPath=C:\Program Files\Microsoft ADAM\Instanz1\data
+LogFilesPath=C:\Program Files\Microsoft ADAM\TestInstanz\data
 
 ImportLDIFFiles="ms-user.ldf"
 ImportLDIFFiles="MS-InetOrgPerson.LDF"
-ImportLDIFFiles="MS-UserProxy.LDF"
+ImportLDIFFiles="MS-UserProxy.LDF"'> "C:\temp\install_adam_template.txt"
 
-############################################################
+Add-WindowsCapability -Name Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0 -Online
+Start-Process -FilePath "$env:SystemRoot\ADAM\adaminstall.exe" -ArgumentList "/answer:C:\temp\install_adam_template.txt"
