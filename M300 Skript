@@ -7,16 +7,19 @@ Set-DnsClientServerAddress -InterfaceAlias "Ethernet0" -ServerAddresses ("192.16
 Rename-Computer 300-01-DC
 $nachname = Read-Host "Gib deinen Nachnamen ein z.B Fahrni"
 
+### Restart 1 ###
+
 ##Install all neeeded features and Modules for Installation
 Install-WindowsFeature DNS
 Install-WindowsFeature -name AD-Domain-Services -IncludeManagementTools
 Import-Module ADDSDeployment
 
+### Restart 2 ###
+
 $SecurePasswordSafeMode = ConvertTo-SecureString '+root4ALL' –asplaintext –force
 $SecurePasswordsync = ConvertTo-SecureString '+role4ALL' –asplaintext –force
 $SecurePasswordtester = ConvertTo-SecureString '+user4ALL' –asplaintext –force
 
-$pw = Read-Host "Gib +root4ALL ein" -AsSecureString
 Install-ADDSForest -DomainName $nachname".modul300" -InstallDNS -SafeModeAdministratorPassword $SecurePasswordSafeMode -Force -Confirm
 
 New-ADUser -Name "sync-user" -Accountpassword $SecurePasswordsync -Enabled $true
