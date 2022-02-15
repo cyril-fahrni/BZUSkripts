@@ -17,7 +17,7 @@ $SecurePasswordsync = ConvertTo-SecureString '+role4ALL' –asplaintext –force
 $SecurePasswordtester = ConvertTo-SecureString '+user4ALL' –asplaintext –force
 
 $pw = Read-Host "Gib +root4ALL ein" -AsSecureString
-Install-ADDSForest -DomainName $nachname+".modul300" -InstallDNS -SafeModeAdministratorPassword $SecurePasswordSafeMode -Force -Confirm
+Install-ADDSForest -DomainName $nachname".modul300" -InstallDNS -SafeModeAdministratorPassword $SecurePasswordSafeMode -Force -Confirm
 
 New-ADUser -Name "sync-user" -Accountpassword $SecurePasswordsync -Enabled $true
 New-ADUser -Name "tester" -Accountpassword $SecurePasswordtester -Enabled $true
