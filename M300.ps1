@@ -1,7 +1,16 @@
-﻿Import-Module ActiveDirectory
+#=========================================================================================#
+# - By Mathis Oklé
+# - Modul 300 Teil 2
+# - 18.02.2022
+#=========================================================================================#
 
-#Variabeln
-$domain = "okle.modul300" 
+#====================================[Poweshell Module]===================================#
+
+Import-Module ActiveDirectory
+
+#=======================================[Variabeln]=======================================#
+
+$domain = Get-ADDomain | Select-Object -ExpandProperty DNSRoot
 $adroot_group = "G_Users"
 $localroot_group = "L_Users"
 
@@ -21,7 +30,8 @@ $verkauf_path = $root_path+"Verkauf"
 $verkauf_Offerten_path = $root_path+"Verkauf\Offerten"
 $verkauf_Verträge_path = $root_path+"Verkauf\Verträge"
 
-#Create Folders
+#===================================[Create Folder]=======================================#
+
 New-Item -Path $austausch_path -ItemType Directory
 New-Item -Path $innendienst_path -ItemType Directory
 New-Item -Path $innendienst_verträge_path -ItemType Directory
@@ -39,7 +49,7 @@ New-Item -Path $verkauf_Verträge_path -ItemType Directory
 
 
 
-#create AD and local Groups and Set Permissons
+#=====================[Create Groups and Permissions]=======================================#
 $shares = Get-ChildItem -Path C:\Shares -Recurse -Directory -Force -ErrorAction SilentlyContinue | Select-Object  -ExpandProperty Fullname
 
 foreach ($share in $shares){
