@@ -1,0 +1,19 @@
+#---------------------------------------------------------------------------------- Powershell ----------------------------------------------------------------------------------#
+
+#--------------------------------------------------------------------------------- Null Variable --------------------------------------------------------------------------------#
+Now how you can check that (check if $variablename has $null as value):
+
+if (!$variablename) { Write-Host "variable is null" }
+
+### Fancy Way ###
+#Variable which is null
+
+$myVariable
+
+#Check variable for null
+
+$myVariable ?? "Is null? True!"
+
+#Check variable for null, and if it is null set the following value
+
+$myVariable ?? "Set the value if null!"
