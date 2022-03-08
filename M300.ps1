@@ -88,5 +88,8 @@ $ACL.SetAccessRule($AccessRule)
 $ACL | Set-Acl -Path $sharepath
 (Get-ACL -Path $sharepath).Access | Format-Table IdentityReference,FileSystemRights,AccessControlType,IsInherited,InheritanceFlags -AutoSize
 
+
+New-SmbShare -Name "Shares" -Path $root_path
 }
+
 
