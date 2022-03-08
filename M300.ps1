@@ -81,15 +81,13 @@ $ACL.SetAccessRule($AccessRule)
 $ACL | Set-Acl -Path $sharepath
 (Get-ACL -Path $sharepath).Access | Format-Table IdentityReference,FileSystemRights,AccessControlType,IsInherited,InheritanceFlags -AutoSize
 
-#Set RW Permisson on Folder
+#Set R Permisson on Folder
 $ACL = Get-ACL -Path $sharepath
 $AccessRule = New-Object System.Security.AccessControl.FileSystemAccessRule($localgroupname_R,"Readandexecute","Allow")
 $ACL.SetAccessRule($AccessRule)
 $ACL | Set-Acl -Path $sharepath
 (Get-ACL -Path $sharepath).Access | Format-Table IdentityReference,FileSystemRights,AccessControlType,IsInherited,InheritanceFlags -AutoSize
 
-
+#Share Folder
 New-SmbShare -Name "Shares" -Path $root_path
 }
-
-
